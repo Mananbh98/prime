@@ -8,6 +8,9 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'prime';
   number="";
+  str="";
+  flag="";
+  no=this.number;
    p() {
 
     var n, i, flag = true;
@@ -28,8 +31,25 @@ export class AppComponent {
 
 
     else
-        console.log(n + " is not prime");
+         console.log(n + " is not prime");
 
 
     }
+
+
+  isPromise(){
+    var n, i, flag = true;
+    n=this.no;
+    for(i = 2; i <= n - 1; i++)
+        if (n % i == 0) {
+            flag = false;
+            break;
+        }
+
+
+
+  }
+  nextprime(){
+
+  }
 }
