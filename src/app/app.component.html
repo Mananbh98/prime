@@ -1,9 +1,9 @@
 <h1>Prime or not</h1>
 
-<div style="text-align:center">
-    <h2>Enter the no. to check if its prime or not</h2>
-    <input type="number" name="number" [(ngModel)]="number">
+<div style="text-align: center">
+  <h2>Enter the no. to check if its prime or not</h2>
+  <input type="number" name="number" [(ngModel)]="number" />
 
-    <button (click)="p()">Submit</button>
-
+  <button (click)="onSubmit()">Submit</button>
+  <p *ngIf="submitted">{{ currentVal }} is {{ isCurrentPrime }}</p>
 </div>
