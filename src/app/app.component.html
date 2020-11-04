@@ -1,13 +1,16 @@
-<h1>Prime or not</h1>
+<h1 tyle="text-align: center">Prime or not</h1>
 
-<div style="text-align:center">
-    <h2>Enter the no. to check if its prime or not</h2>
-    <input type="number" name="number" [(ngModel)]="number">
+<div style="text-align: center">
+  <h2>Enter the no. to check if its prime or not</h2>
+  <input type="number" name="number" [(ngModel)]="number" />
 
-    <button (click)="p()">Submit</button>
-    <h5>{{flag}}</h5>
-
-
-    <button (click)="p()">Check for next prime</button>
-
+  <button (click)="onSubmit()">Submit</button>
+  <p *ngIf="submitted">{{ currentVal }} is {{ isCurrentPrime }}</p>
+</div>
+<div style="text-align: center">
+  <h2>To find next prime no. click on button Next Prime</h2>
+  <button (click)="onNextPrime()">Next Prime</button>
+  <p *ngIf="submittedNextPrimeButton">
+    {{ nextPrimeVal }} is the next prime number
+  </p>
 </div>

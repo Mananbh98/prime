@@ -11,25 +11,59 @@ var core_1 = require("@angular/core");
 var AppComponent = /** @class */ (function () {
     function AppComponent() {
         this.title = 'prime';
-        this.number = "";
-        this.str = "";
+        this.number = '';
+        this.currentVal = 0;
+        this.submitted = false;
+        this.isCurrentValPrime = false;
+        this.isCurrentPrime = '';
+        this.N = 0;
+        this.isNextPrime = false;
+        this.nextPrimeVal = 0;
+        this.submittedNextPrimeButton = false;
     }
-    AppComponent.prototype.p = function () {
+    AppComponent.prototype.onSubmit = function () {
+        this.submitted = true;
+        this.currentVal = parseInt(this.number);
+        this.isCurrentValPrime = this.isPrime(this.currentVal);
+        if (this.isCurrentValPrime === true) {
+            this.isCurrentPrime = 'prime';
+        }
+        else {
+            this.isCurrentPrime = 'not prime';
+        }
+        console.log(this.currentVal + ' is  ' + this.isCurrentPrime);
+    };
+    AppComponent.prototype.onNextPrime = function () {
+        this.submittedNextPrimeButton = true;
+        if (this.isCurrentValPrime === true) {
+            this.N = this.currentVal;
+        }
+        this.nextPrimeVal = this.nextPrime(this.N);
+        console.log(this.nextPrimeVal + 'is the next prime');
+    };
+    AppComponent.prototype.isPrime = function (val) {
         var n, i, flag = true;
-        // Getting the value form text
-        // field using DOM
-        n = this.number;
-        n = parseInt(n);
-        for (i = 2; i <= n - 1; i++)
+        n = val;
+        for (i = 2; i <= n - 1; i++) {
             if (n % i == 0) {
                 flag = false;
                 break;
             }
+        }
         // Check and display alert message
-        if (flag == true)
-            console.log(n + " is prime");
-        else
-            console.log(n + " is not prime");
+        return flag;
+    };
+    AppComponent.prototype.nextPrime = function (val) {
+        var N, found = false;
+        N = val;
+        while (!found) {
+            N++;
+            if (this.isPrime(N) === true) {
+                found = true;
+                console.log('The next prime is ' + N);
+            }
+        }
+        return N;
     };
     AppComponent = __decorate([
         core_1.Component({
